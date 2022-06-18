@@ -1,0 +1,13 @@
+.banner {
+    display: flex;
+    min-height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../../assets/images/pink-bg.jpg');
+    &__title {
+        margin: auto;
+        color:#fff;
+        font-size: 30px;
+    }
+}

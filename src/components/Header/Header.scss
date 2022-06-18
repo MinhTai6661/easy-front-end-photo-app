@@ -1,0 +1,16 @@
+.header {
+    padding: 20px;
+    font-weight: 700;
+    background-color: #fff;
+
+
+    &__title {
+        color: #000;
+    }
+    &__link {
+        &--active,
+        &:hover{
+            color: rgba(41, 41, 255, 0.755);
+        }
+    }
+}

@@ -1,11 +1,15 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import "./App.scss";
+import Header from "./components/Header";
 import NotFound from "./components/NotFound";
-import AddEditPage from "./features/pages/AddEdit";
+import AddEditPage from './features/Photo/pages/AddEdit'
+
+ 
+
 
 // Lazy load - Code splitting
-const Photo = React.lazy(() => import("./features/Photo"));
+const MainPage = React.lazy(() => import("./features/Photo/pages/Main"));
 
 function App() {
     return (
@@ -13,35 +17,24 @@ function App() {
             <Suspense fallback={<div>Loading ...</div>}>
                 <BrowserRouter>
                     {/* TODO: Remove after testing */}
-                    <ul>
-                        <li>
-                            <Link to="/photos">Go to photo page</Link>
-                        </li>
-                        <li>
-                            <Link to="/photos/add">
-                                Go to Add new photo page
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/photos/123">Go to Edit photo page</Link>
-                        </li>
-                    </ul>
+                   <Header/>
 
                     <Routes>
                         {/* <Redirect exact from="/" to="/photos" /> */}
 
-                        <Route path="/photos" element={<Photo />} />
+                        <Route path="/photos" element={<MainPage />} />
 
-                        <Route path="/photosadd" element={<AddEditPage />} />
+                        <Route path="photos/add" element={<AddEditPage />} />
                         <Route
                             path="photos/:photoId"
-                            element={<AddEditPage />}
+                            element={<AddEditPage/>}
                         />
 
                         <Route element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>
             </Suspense>
+            
         </div>
     );
 }
