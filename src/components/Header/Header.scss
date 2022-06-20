@@ -3,13 +3,13 @@
     font-weight: 700;
     background-color: #fff;
 
-
     &__title {
         color: #000;
     }
     &__link {
+        color:#000;
         &--active,
-        &:hover{
+        &:hover {
             color: rgba(41, 41, 255, 0.755);
         }
     }

@@ -18,7 +18,7 @@ function Header(props) {
                     </Col>
                     <Col>
                         <NavLink
-                            to="photos"
+                            to="/photos"
                             className={(nav)=>{
                                 return `header__link ${nav.isActive && 'header__link--active'}`
                             }}

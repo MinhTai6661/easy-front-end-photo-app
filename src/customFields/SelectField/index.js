@@ -25,14 +25,19 @@ function SelectField(props) {
 const selectedOption = options.find(option => option.value === value)
 
     const handeChangeSelect = (option) => {
-        const fakeEvent = {
-            target: {
-                value: option.value ||null,
-                name,
-            },
-        };
+        //cach 1
+        // const fakeEvent = {
+        //     target: {
+        //         value: option.value ||null,
+        //         name,
+        //     },
+        // };
         
-        field.onChange(fakeEvent)
+        // field.onChange(fakeEvent)
+
+        //cach 2: easier
+        form.setFieldValue(name, option.value ||null) 
+        
     };
     // console.log(field);
     return (
