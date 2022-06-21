@@ -1,15 +1,13 @@
-import { Button, FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-// import { PHOTO_CATEGORY_OPTIONS } from "../../../../constants/global";
-// import Images from "../../../../constants/images";
+import { Button, FormGroup } from 'reactstrap';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Images from 'constants/images';
 import { PHOTO_CATEGORY_OPTIONS } from 'constants/global';
-import { Formik, Form, FastField } from 'formik';
 import InputField from 'customFields/InputField';
-import SelectField from 'customFields/SelectField';
 import RandomPhotoField from 'customFields/RandomPhotoField';
+import SelectField from 'customFields/SelectField';
+import { FastField, Form, Formik } from 'formik';
+import * as yup from 'yup';
 
 PhotoForm.propTypes = {
     onSubmit: PropTypes.func,
@@ -19,16 +17,32 @@ function PhotoForm() {
     const initialValue = {
         title: '',
         category: null,
-        photo:''
+        photo: '',
     };
+
+    const vaidationSchema = yup.object().shape({
+        title: yup.string().required('this feild is not empty'),
+        category: yup.number().required('this field is not empty!').nullable(),
+        photo: yup.string().when('category', {
+            is: 1,
+            then: yup.string().required('this field is not empty!'),
+            otherwise: yup.string().notRequired(),  //same logic of else
+        }),
+    });
     return (
-        <Formik initialValues={initialValue} onSubmit={(data)=>{console.log('data: ',data)}}>
+        <Formik
+            initialValues={initialValue}
+            onSubmit={(data) => {
+                console.log('data: ', data);
+            }}
+            validationSchema={vaidationSchema}
+        >
             {(formikProps) => {
                 const { values, errors, touched } = formikProps;
-                console.log(
-                    '🚀 ~ file: index.js ~ line 27 ~ PhotoForm ~  { values, errors, touched } ',
-                    { values, errors, touched }
-                );
+                // console.log(
+                //     '🚀 ~ file: index.js ~ line 27 ~ PhotoForm ~  { values, errors, touched } ',
+                //     { values, errors, touched }
+                // );
                 return (
                     <Form>
                         <FastField

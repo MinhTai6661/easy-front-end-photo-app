@@ -1,5 +1,7 @@
-url : /mnt/e/Thiet-Ke-WEB/easy-frontend/redux/project/photo-app
-url GitBash: /e/Thiet-Ke-WEB/easy-frontend/redux/project/photo-app
+# url :
+ cd /mnt/e/Thiet-Ke-WEB/easy-frontend/redux/project/photo-app
+# url GitBash:
+ cd /e/Thiet-Ke-WEB/easy-frontend/redux/project/photo-app
 
 # Bài 4:
 

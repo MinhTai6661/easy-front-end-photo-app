@@ -1,7 +1,8 @@
+import { ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
-import { FormGroup, Label } from 'reactstrap';
+import { FormFeedback, FormGroup, Label } from 'reactstrap';
 
 SelectField.propTypes = {
     field: PropTypes.object.isRequired,
@@ -21,8 +22,11 @@ function SelectField(props) {
     const { field, form, label, placehoder, options } = props;
 
     const { value, name, onChange, onBlur } = field;
-    
-const selectedOption = options.find(option => option.value === value)
+
+    const { errors, touched } = form;
+    const isShowMessage = !!(errors[name] && touched[name]);
+
+    const selectedOption = options.find((option) => option.value === value);
 
     const handeChangeSelect = (option) => {
         //cach 1
@@ -32,12 +36,11 @@ const selectedOption = options.find(option => option.value === value)
         //         name,
         //     },
         // };
-        
+
         // field.onChange(fakeEvent)
 
         //cach 2: easier
-        form.setFieldValue(name, option.value ||null) 
-        
+        form.setFieldValue(name, option.value || null);
     };
     // console.log(field);
     return (
@@ -46,9 +49,16 @@ const selectedOption = options.find(option => option.value === value)
             <Select
                 id={name}
                 {...field}
-                value ={selectedOption}
+                value={selectedOption}
                 onChange={handeChangeSelect}
                 options={options}
+                className={isShowMessage ? `is-invalid` : ''}
+            />
+
+            <ErrorMessage
+                className="error-message"
+                name={name}
+                component={FormFeedback}
             />
         </FormGroup>
     );

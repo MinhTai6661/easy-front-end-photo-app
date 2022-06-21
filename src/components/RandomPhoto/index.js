@@ -21,13 +21,13 @@ const randomUrl = () => {
 };
 
 function RandomPhoto(props) {
-    const { name, imageUrl, onImageChange, onRandomBlur } = props;
+    const { name, imageUrl, onImageChange, onRandomBlur,className } = props;
 
     const handeBtnClick = () => {
         onImageChange(randomUrl());
     };
     return (
-        <div className="random-photo">
+        <div className={`random-photo ${className}`}>
             <div className="random-photo__btn">
                 <Button
                     outline
@@ -35,13 +35,14 @@ function RandomPhoto(props) {
                     onClick={handeBtnClick}
                     onBlur={onRandomBlur}
                     name={name}
+                    
                 >
                     Random a Photo
                 </Button>
             </div>
-            <div className="random-photo__img">
+            <div className="random-photo__img" >
                 {imageUrl && (
-                    <img src={imageUrl} alt="click again to get new image" />
+                    <img   src={imageUrl} alt="click again to get new image" />
                 )}
             </div>
         </div>
