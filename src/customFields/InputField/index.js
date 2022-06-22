@@ -18,7 +18,7 @@ InputField.defaultProps = {
 
 function InputField(props) {
     const { field, form, label, placeholder, type, disable } = props;
-    console.log('🚀 ~ file: index.js ~ line 21 ~ InputField ~ form', form);
+    // console.log('🚀 ~ file: index.js ~ line 21 ~ InputField ~ form', form);
     // console.log(props);
     const { name, value, onChange, onBlur } = field;
 

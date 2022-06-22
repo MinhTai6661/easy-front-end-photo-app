@@ -4,6 +4,7 @@ import Banner from "../../../../components/Banner";
 import pinkBackground from '../../../../assets/images/pink-bg.jpg';
 import Images from "../../../../constants/images";
 import { Container } from "reactstrap";
+import {useSelector} from 'react-redux'
 
  
 // import NotFound from "../../components/NotFound";
@@ -14,7 +15,9 @@ import { Container } from "reactstrap";
 MainPage.propTypes = {};
 
 function MainPage(props) {
-    console.log('pinkBackground',pinkBackground)
+    const dataRedux = useSelector((state) => state.photos);
+    console.log("🚀 ~ file: index.js ~ line 18 ~ MainPage ~ dataRedux", dataRedux)
+     
     const match = useMatch('/photos');
     
     return (
