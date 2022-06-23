@@ -1,0 +1,66 @@
+.photo {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        transition: 0.2s ease-in-out;
+    }
+
+    &__overlay {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.697);
+        top: 0;
+        left: 0;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+
+        flex-flow: column nowrap;
+        width: 100%;
+        height: 100%;
+
+        opacity: 0;
+
+        transition: 0.2s ease-in-out;
+        transform: translateY( 100%);
+    }
+    &__title {
+        color: #fff;
+        display: block;
+        font-size: 16px;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    &__group-btn {
+        display: flex;
+        justify-content: center;
+
+        .btn-remove {
+            min-width: 90px;
+            margin-right: 10px;
+
+            &:hover{
+                background-color: var(--bs-danger);
+            }
+        }
+        .btn-edit {
+            min-width: 90px;
+
+        }
+    }
+
+    &:hover &__overlay{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    &:hover &__img{
+        transform: scale(1.2);
+    }
+}

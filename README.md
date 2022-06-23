@@ -25,3 +25,13 @@ Cách dùng FastField:
     placeholder="Enter something..."
 
 />'
+
+
+
+# knowlead have to learn
+
+1. Yup
+2. Formik or react-hook-form (suggest)
+3. react-router-dom v6
+4.learn how to compose components effectively
+5. keep learing ...
